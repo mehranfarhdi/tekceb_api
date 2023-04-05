@@ -6,7 +6,7 @@ from .serializers import (
     UserSerializer,
     VerifySerializer,
     PhoneSerializer,
-    ResetPasswordSerializer
+    ResetPasswordSerializer, LogoutSerializer
 )
 from .models import User
 from django.contrib.auth import login
@@ -141,3 +141,16 @@ class ResetPasswordApi(generics.GenericAPIView):
             return Response({
                 "message": "error, please login and try it again.",
             }, status=status.HTTP_401_UNAUTHORIZED)
+
+class LogoutAPIView(generics.GenericAPIView):
+    serializer_class = LogoutSerializer
+
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
