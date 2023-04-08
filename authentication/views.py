@@ -14,10 +14,10 @@ from authentication import helper
 from django.utils import timezone
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.permissions import IsAuthenticated
-from django.http import HttpResponse, Http404
-from django.urls import reverse
-import logging
-from rest_framework.views import APIView
+# from django.http import HttpResponse, Http404
+# from django.urls import reverse
+# import logging
+# from rest_framework.views import APIView
 from django.contrib import auth
 
 
@@ -141,6 +141,7 @@ class ResetPasswordApi(generics.GenericAPIView):
             return Response({
                 "message": "error, please login and try it again.",
             }, status=status.HTTP_401_UNAUTHORIZED)
+
 
 class LogoutAPIView(generics.GenericAPIView):
     serializer_class = LogoutSerializer

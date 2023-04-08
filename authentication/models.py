@@ -27,3 +27,10 @@ class User(AbstractUser):
     objects = MyUserManager()
     USERNAME_FIELD = 'phone'
     REQUIRED_FIELDS = []
+
+    def tokens(self):
+        refresh = RefreshToken.for_user(self)
+        return {
+            'refresh': str(refresh),
+            'access': str(refresh.access_token)
+        }

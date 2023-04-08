@@ -3,6 +3,8 @@ from .models import User
 from authentication import helper
 from django.utils import timezone
 from rest_framework_simplejwt.tokens import RefreshToken, TokenError
+from django.contrib import auth
+from rest_framework.exceptions import AuthenticationFailed
 
 
 class GateSerializer(serializers.Serializer):
@@ -58,3 +60,4 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ['phone', 'id']
+

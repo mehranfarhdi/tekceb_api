@@ -8,12 +8,13 @@ password = '961SM'
 
 def send_verifyCode(phone, verifyCode):
     try:
-        api = Api(username, password)
-        sms_rest = api.sms()
-        text = [verifyCode, ]
-        to = phone
-        bodyId = 93017
-        sms_rest.send_by_base_number(text, to, bodyId)
+        pass
+        # api = Api(username, password)
+        # sms_rest = api.sms()
+        # text = [verifyCode, ]
+        # to = phone
+        # bodyId = 93017
+        # sms_rest.send_by_base_number(text, to, bodyId)
     except:
         pass
 
