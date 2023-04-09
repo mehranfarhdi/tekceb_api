@@ -3,11 +3,11 @@ version: "3.7"
 services:
   web:
     build: .
-    command: "python manage.py runserver 0.0.0.0:8000"
+    command: "python manage.py runserver 0.0.0.0:7000"
     volumes:
       - "./:/code/"
     ports:
-      - 8000:8000
+      - 7000:7000
     environment:
       - DB_HOST=db
       - DB_NAME=app

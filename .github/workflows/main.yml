@@ -9,7 +9,7 @@ on:
       - v*
 
 env:
-  IMAGE_NAME: argos_api
+  IMAGE_NAME: tekceb_api
 
 jobs:
   backend_build_and_deploy:
@@ -43,15 +43,15 @@ jobs:
           echo VERSION=latest
           docker tag $IMAGE_NAME $IMAGE_ID:latest
           docker push $IMAGE_ID:latest
-      - name: Deploy Image
-        uses: appleboy/ssh-action@master
-
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          key: ${{ secrets.KEY }}
-          port: ${{ secrets.PORT }}
-          script: |
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
-            docker pull ghcr.io/mehranfarhdi/argos_api:latest
-            docker-compose -f /opt/argos-deploy/argos_api/docker-compose.yml up -d --force-recreate --remove-orphans
+#      - name: Deploy Image
+#        uses: appleboy/ssh-action@master
+#
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{ secrets.USER }}
+#          key: ${{ secrets.KEY }}
+#          port: ${{ secrets.PORT }}
+#          script: |
+#            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+#            docker pull ghcr.io/mehranfarhdi/tekceb_api:latest
+#            docker-compose -f /opt/argos-deploy/tekceb_api/docker-compose.yml up -d --force-recreate --remove-orphans
